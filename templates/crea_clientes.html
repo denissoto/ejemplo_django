@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+<form role="form" action="{% url 'clientes_crear' %}" method="post">
+    <div class="form-group">
+        <h2>Nuevo cliente</h2>
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+    </div>
+    </hr>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" name="submit" value="Crear">
+        <a class="btn btn-secondary" href="{% url 'clientes' %}">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

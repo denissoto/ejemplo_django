@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contenido_login %}
+<div style="text-align:center; margin:0 auto;">
+	{% block message %}
+    {% endblock%}
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="form-group">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+            <div class="helpText">{{ field.help_text|safe }}</div>
+        </div>
+        {% endfor %}
+        <p>
+            <a href="{% url 'password_reset' %}">Olvidé mi contraseña</a>
+        </p>
+        <button type="submit" class="btn btn-primary">Acceder</button>
+    </form>
+</div>
+{% endblock %}

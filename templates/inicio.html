@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Página de inicio</h1>
+<p>Presionar cualquier botón para continuar:</p>
+<div class="row m-2">
+<div class="col-sm-6">
+    <a href="{% url 'clientes' %}" class="btn btn-primary">Ver sólo clientes</a>
+</div>
+<div class="col-sm-6">
+    <a href="{% url 'productos' %}" class="btn btn-info">Ver sólo productos</a>
+</div>
+</div>
+<div class="row m-2">
+    <h2>Clientes</h2>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Documento</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ cliente.nombre }}}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.documento }}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="row m-2">
+    <h2>Productos</h2>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Código</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ producto.codigo }}}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
